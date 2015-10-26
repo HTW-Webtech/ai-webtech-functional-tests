@@ -1,23 +1,13 @@
 require 'byebug'
-require 'capybara/rspec'
-require 'capybara/poltergeist'
-Capybara.default_driver = :poltergeist
+# Load support files
+Dir[File.expand_path('../support', __FILE__) + '/**/*.rb'].each { |rb| require rb }
 
 # TODO: Remove once the reporter is extracted
 require_relative '../lib/test_reporter'
 
-if ENV['TEST_ENV'] == 'development'
-  Capybara.register_driver :selenium_chrome do |app|
-    Capybara::Selenium::Driver.new(app, browser: :chrome)
-  end
-  Capybara.current_driver = :selenium_chrome
-end
-
-def read_support_file(file_name)
-  IO.binread(File.expand_path(__dir__) + "/support/files/#{file_name}")
-end
-
 RSpec.configure do |config|
+  config.include ValidatorHelper
+
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
