@@ -21,3 +21,5 @@ namespace :test do
     TestReporter.run
   end
 end
+
+task default: 'test:prod'
