@@ -10,7 +10,7 @@ module TestReporter
   module_function
 
   def run
-    reports = TestReport::Inspector.fetch_reports
-    TestReport::Reporter.report reports
+    reports = TestReporter::Inspector.fetch_reports
+    TestReporter::Reporter.report reports
   end
 end
