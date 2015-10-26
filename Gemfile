@@ -6,6 +6,7 @@ gem 'rspec'
 gem 'ci_reporter_rspec'
 gem 'nokogiri'
 gem 'typhoeus'
+gem 'cipher-base64'
 gem 'complex_config', require: 'complex_config/rude'
 
 group :development do
