@@ -1,3 +1,4 @@
+require 'fileutils'
 require 'byebug'
 # Load support files
 Dir[File.expand_path('../support', __FILE__) + '/**/*.rb'].each { |rb| require rb }
@@ -5,8 +6,17 @@ Dir[File.expand_path('../support', __FILE__) + '/**/*.rb'].each { |rb| require r
 # TODO: Remove once the reporter is extracted
 require_relative '../lib/test_reporter'
 
+# Load configuration from ENV
+$TEST_ENV          = ENV.fetch('TEST_ENV')
+$EXERCISE_ID       = ENV.fetch('EXERCISE_ID')
+$EXERCISE_BASE_URL = ENV.fetch('EXERCISE_BASE_URL')
+$USER_NAME         = ENV.fetch('USER_NAME')
+$USER_NAME         = ENV.fetch('USER_EMAIL')
+$SERVER_PORT       = ENV.fetch('DEV_SERVER_PORT')
+
 RSpec.configure do |config|
   config.include ValidatorHelper
+  puts "Configuring rspec"
 
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
@@ -21,6 +31,28 @@ RSpec.configure do |config|
     if self.respond_to?(:page)
       if page.driver.browser.respond_to?(:close)
         page.driver.browser.close
+      end
+    end
+  end
+
+  # Local test settings
+  if $TEST_ENV == 'development'
+    puts "sind in dev mode"
+    config.before :suite do
+      # TODO: Extract into some helper code
+      puts "Bringing up local webserver on port #{$SERVER_PORT}"
+      $SERVER_PID = fork do
+        FileUtils.cd "solutions/exercise-#{$EXERCISE_ID}" do
+          exec "ruby -run -e httpd . -p #{$SERVER_PORT}"
+        end
+      end
+    end
+
+    config.after :suite do
+      if $SERVER_PID
+        puts "Bringing down local webserver"
+        Process.kill 'TERM', $SERVER_PID
+        Process.wait $SERVER_PID
       end
     end
   end

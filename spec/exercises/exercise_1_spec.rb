@@ -24,7 +24,7 @@ shared_examples 'all pages' do |url|
 end
 
 describe 'Exercise 1', type: :feature do
-  INDEX_URL   = ENV['EXERCISE_BASE_URL']
+  INDEX_URL   = $EXERCISE_BASE_URL
   CONTACT_URL = "#{INDEX_URL}/contact.html"
   IMPRINT_URL = "#{INDEX_URL}/imprint.html"
 
