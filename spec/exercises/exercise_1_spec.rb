@@ -18,8 +18,7 @@ shared_examples 'all pages' do |url|
   end
 
   it 'conforms to the Nu Html Checker' do
-    visit_validation_page(url)
-    expect(page.body).to include 'Document checking completed. No errors or warnings to show.'
+    expect(page_markup_valid?(url)).to eq true
   end
 end
 
