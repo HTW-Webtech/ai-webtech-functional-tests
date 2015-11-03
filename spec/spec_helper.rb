@@ -45,10 +45,8 @@ RSpec.configure do |config|
           exec "ruby -run -e httpd . -p #{$SERVER_PORT}"
         end
       end
-    end
 
-    config.after :suite do
-      if $SERVER_PID
+      at_exit do
         puts "Bringing down local webserver"
         Process.kill 'TERM', $SERVER_PID
         Process.wait $SERVER_PID
