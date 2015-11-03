@@ -1,6 +1,5 @@
 require 'ci/reporter/rake/rspec'
 require 'rspec/core/rake_task'
-require 'byebug'
 require_relative 'lib/test_reporter'
 
 RSpec::Core::RakeTask.new(:spec_lib) do |c|
