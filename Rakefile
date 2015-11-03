@@ -22,7 +22,7 @@ namespace :exercise do
   end
 
   desc 'Run tests with a headless phantomjs'
-  task prod: ['ci:setup:rspec', 'exercise:run_and_report']
+  task prd: ['ci:setup:rspec', 'exercise:run_and_report']
 
   desc 'Post report for test to exercise service'
   task :report do
