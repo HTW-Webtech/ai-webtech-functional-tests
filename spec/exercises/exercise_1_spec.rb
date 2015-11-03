@@ -5,6 +5,15 @@ shared_examples 'all pages' do |url|
     page.find(:xpath, "//img[contains(@src, 'bazinga-logo.png')]")
   end
 
+  it 'the product-logo has set a width and height attribute' do
+    page.find(:xpath, "//img[@width]")
+    page.find(:xpath, "//img[@height]")
+  end
+
+  it 'the product-logo has set a title' do
+    page.find(:xpath, "//img[@title]")
+  end
+
   it 'has the correct headline' do
     page.find(:xpath, "//h1[contains(., 'Bazinga!')]")
   end
@@ -17,7 +26,7 @@ shared_examples 'all pages' do |url|
     page.find(:xpath, "//a[contains(@href, 'imprint.html')]")
   end
 
-  it 'conforms to the Nu Html Checker' do
+  it 'conforms to the W3C Html Checker' do
     expect(page_markup_valid?(url)).to eq true
   end
 end
@@ -32,7 +41,7 @@ describe 'Exercise 1', type: :feature do
     before { visit INDEX_URL }
 
     it 'has a p-tag with the Bazinga product description text "Lorem Ipsum"' do
-      page.find(:xpath, "//p[contains(., 'Lorem Ipsum')]")
+      expect(page.body).to match(/lorem ipsum/i)
     end
   end
 
