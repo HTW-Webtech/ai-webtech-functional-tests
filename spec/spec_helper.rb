@@ -36,20 +36,22 @@ RSpec.configure do |config|
   end
 
   # Local test settings
+  # TODO: Extract into some helper code
   if $TEST_ENV == 'development'
     config.before :suite do
-      # TODO: Extract into some helper code
-      puts "Bringing up local webserver on port #{$SERVER_PORT}"
-      $SERVER_PID = fork do
-        FileUtils.cd "solutions/exercise-#{$EXERCISE_ID}" do
-          exec "ruby -run -e httpd . -p #{$SERVER_PORT}"
-        end
+      FileUtils.cd "solutions/exercise-#{$EXERCISE_ID}" do
+        $SERVER_PID = Process.spawn("ruby -run -e httpd . -p #{$SERVER_PORT}", out: '/dev/null', err: '/dev/null')
+        puts "Running local webserver on port #{$SERVER_PORT}, PID: #{$SERVER_PID}"
       end
 
       at_exit do
-        puts "Bringing down local webserver"
-        Process.kill 'TERM', $SERVER_PID
-        Process.wait $SERVER_PID
+        if $SERVER_PID
+          puts "Bringing down local webserver, PID: #{$SERVER_PID}"
+          Process.kill 'TERM', $SERVER_PID
+          Process.wait $SERVER_PID
+        else
+          puts "Warning: I did not get a PID."
+        end
       end
     end
   end
