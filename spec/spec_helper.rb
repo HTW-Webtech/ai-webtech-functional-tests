@@ -1,9 +1,10 @@
 require 'fileutils'
 require 'byebug'
+
 # Load support files
 Dir[File.expand_path('../support', __FILE__) + '/**/*.rb'].each { |rb| require rb }
 
-# TODO: Remove once the reporter is extracted
+# Load TestReport
 require_relative '../lib/test_reporter'
 
 # Load configuration from ENV
@@ -16,7 +17,6 @@ $SERVER_PORT       = ENV.fetch('DEV_SERVER_PORT')
 
 RSpec.configure do |config|
   config.include ValidatorHelper
-  puts "Configuring rspec"
 
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
@@ -37,7 +37,6 @@ RSpec.configure do |config|
 
   # Local test settings
   if $TEST_ENV == 'development'
-    puts "sind in dev mode"
     config.before :suite do
       # TODO: Extract into some helper code
       puts "Bringing up local webserver on port #{$SERVER_PORT}"
