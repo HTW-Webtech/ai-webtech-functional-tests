@@ -53,6 +53,13 @@ describe 'Exercise 1', type: :feature do
       page.find(:xpath, "//form")
       page.find(:xpath, "//form[contains(@method, 'post')]")
     end
+
+    it 'contains the expected input elements' do
+      form = page.find(:xpath, "//form")
+      form.find(:xpath, "//input[contains(@name, 'name')]")
+      form.find(:xpath, "//input[contains(@name, 'email')]")
+      page.find(:xpath, "//textarea[contains(@name, 'message')]")
+    end
   end
 
   context 'the imprint.html' do
