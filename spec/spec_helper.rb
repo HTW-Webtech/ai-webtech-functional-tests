@@ -13,7 +13,6 @@ $EXERCISE_ID       = ENV.fetch('EXERCISE_ID')
 $EXERCISE_BASE_URL = ENV.fetch('EXERCISE_BASE_URL')
 $USER_NAME         = ENV.fetch('USER_NAME')
 $USER_NAME         = ENV.fetch('USER_EMAIL')
-$SERVER_PORT       = ENV.fetch('DEV_SERVER_PORT')
 
 RSpec.configure do |config|
   config.include ValidatorHelper
@@ -37,6 +36,7 @@ RSpec.configure do |config|
 
   # Local test settings
   if $TEST_ENV == 'development'
+    $SERVER_PORT = ENV.fetch('DEV_SERVER_PORT')
     config.before :suite do
       # TODO: Extract into some helper code
       puts "Bringing up local webserver on port #{$SERVER_PORT}"
