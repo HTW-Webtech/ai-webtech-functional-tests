@@ -1,0 +1,3 @@
+[submodule "solutions"]
+	path = solutions
+	url = git@github.com:HTW-Webtech/ai-webtech-functional-tests-solutions.git
