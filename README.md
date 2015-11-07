@@ -4,8 +4,8 @@ to students of "Webtentwicklung" course of HTW-Berlin.
 
 # Usage
 ~~~ ruby
-run `rake exercise:dev`  # for dev reporting
-run `rake exercise:prod` # for prod reporting
+run `rake exercise:dev` # for dev reporting
+run `rake exercise:prd` # for prod reporting
 run `rake` # to spec this code
 ~~~
 
