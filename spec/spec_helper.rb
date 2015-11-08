@@ -16,6 +16,7 @@ $USER_NAME         = ENV.fetch('USER_EMAIL')
 
 RSpec.configure do |config|
   config.include ValidatorHelper
+  config.include ExpectationsHelper
 
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
