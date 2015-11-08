@@ -17,7 +17,7 @@ shared_examples 'all pages' do |url|
     page.find(:xpath, "//a[contains(@href, 'imprint.html')]")
   end
 
-  it 'conforms to the Nu Html Checker' do
+  it 'is valid according to the W3C Html Checker: https://validator.w3.org/' do
     expect(page_markup_valid?(url)).to eq true
   end
 end
