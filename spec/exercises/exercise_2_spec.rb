@@ -18,7 +18,7 @@ describe 'Exercise 2: CSS Layouts', type: :feature, js: true do
       let(:style_node) { page.find(:xpath, "//head/link[contains(@href, 'style.css')]", visible: false) }
       let(:style) { open(style_node['href']).read }
 
-      %w[background border border-radius color display content cursor font-family
+      %w[background border border-radius color display content font-family
       font-size font-weight margin padding transition transform].each do |expected_property|
         it "includes the css property #{expected_property}" do
           expected = "#{expected_property}:"
