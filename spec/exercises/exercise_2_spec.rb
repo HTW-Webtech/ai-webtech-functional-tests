@@ -21,7 +21,7 @@ describe 'Exercise 2:', type: :feature, js: true do
 
       %w[background border border-radius color display content font-family
       font-size font-weight margin padding transition transform].each do |expected_property|
-        it ", which contains the css property #{expected_property}" do
+        it "which contains the css property #{expected_property}" do
           expected = "#{expected_property}:"
           expect(style.include?(expected)).to eq(true), "Your style.css does not include the css-property '#{expected_property}'"
         end
