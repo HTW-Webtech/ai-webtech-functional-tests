@@ -8,7 +8,7 @@ Dir[File.expand_path('../support', __FILE__) + '/**/*.rb'].each { |rb| require r
 require_relative '../lib/test_reporter'
 
 # Load configuration from ENV
-$TEST_ENV          = ENV.fetch('TEST_ENV')
+$TEST_ENV          = ENV.fetch('TEST_ENV', false)
 $EXERCISE_ID       = ENV.fetch('EXERCISE_ID')
 $EXERCISE_BASE_URL = ENV.fetch('EXERCISE_BASE_URL')
 $USER_NAME         = ENV.fetch('USER_NAME')
@@ -16,6 +16,7 @@ $USER_NAME         = ENV.fetch('USER_EMAIL')
 
 RSpec.configure do |config|
   config.include ValidatorHelper
+  config.include SupportFiles
 
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true

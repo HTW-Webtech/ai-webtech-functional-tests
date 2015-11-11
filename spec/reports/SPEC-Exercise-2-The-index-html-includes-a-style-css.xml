@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Exercise 2: The index.html includes a style.css" tests="13" time="1.580245" failures="12" errors="0" skipped="0" timestamp="2015-11-11T18:51:27+01:00">
+  <testcase name="Exercise 2: The index.html includes a style.css which contains the css property background" time="0.134027">
+    <failure type="RSpec::Expectations::ExpectationNotMetError" message="Your style.css does not include the css-property 'background'">
+Your style.css does not include the css-property 'background' (RSpec::Expectations::ExpectationNotMetError)
+Your style.css does not include the css-property 'background'
+./spec/exercises/exercise_2_spec.rb:26:in `block (5 levels) in &lt;top (required)&gt;'    </failure>
+  </testcase>
+  <testcase name="Exercise 2: The index.html includes a style.css which contains the css property border" time="0.121293">
+    <failure type="RSpec::Expectations::ExpectationNotMetError" message="Your style.css does not include the css-property 'border'">
+Your style.css does not include the css-property 'border' (RSpec::Expectations::ExpectationNotMetError)
+Your style.css does not include the css-property 'border'
+./spec/exercises/exercise_2_spec.rb:26:in `block (5 levels) in &lt;top (required)&gt;'    </failure>
+  </testcase>
+  <testcase name="Exercise 2: The index.html includes a style.css which contains the css property border-radius" time="0.117842">
+    <failure type="RSpec::Expectations::ExpectationNotMetError" message="Your style.css does not include the css-property 'border-radius'">
+Your style.css does not include the css-property 'border-radius' (RSpec::Expectations::ExpectationNotMetError)
+Your style.css does not include the css-property 'border-radius'
+./spec/exercises/exercise_2_spec.rb:26:in `block (5 levels) in &lt;top (required)&gt;'    </failure>
+  </testcase>
+  <testcase name="Exercise 2: The index.html includes a style.css which contains the css property color" time="0.12066">
+    <failure type="RSpec::Expectations::ExpectationNotMetError" message="Your style.css does not include the css-property 'color'">
+Your style.css does not include the css-property 'color' (RSpec::Expectations::ExpectationNotMetError)
+Your style.css does not include the css-property 'color'
+./spec/exercises/exercise_2_spec.rb:26:in `block (5 levels) in &lt;top (required)&gt;'    </failure>
+  </testcase>
+  <testcase name="Exercise 2: The index.html includes a style.css which contains the css property display" time="0.120808">
+    <failure type="RSpec::Expectations::ExpectationNotMetError" message="Your style.css does not include the css-property 'display'">
+Your style.css does not include the css-property 'display' (RSpec::Expectations::ExpectationNotMetError)
+Your style.css does not include the css-property 'display'
+./spec/exercises/exercise_2_spec.rb:26:in `block (5 levels) in &lt;top (required)&gt;'    </failure>
+  </testcase>
+  <testcase name="Exercise 2: The index.html includes a style.css which contains the css property content" time="0.119601">
+    <failure type="RSpec::Expectations::ExpectationNotMetError" message="Your style.css does not include the css-property 'content'">
+Your style.css does not include the css-property 'content' (RSpec::Expectations::ExpectationNotMetError)
+Your style.css does not include the css-property 'content'
+./spec/exercises/exercise_2_spec.rb:26:in `block (5 levels) in &lt;top (required)&gt;'    </failure>
+  </testcase>
+  <testcase name="Exercise 2: The index.html includes a style.css which contains the css property font-family" time="0.120104">
+    <failure type="RSpec::Expectations::ExpectationNotMetError" message="Your style.css does not include the css-property 'font-family'">
+Your style.css does not include the css-property 'font-family' (RSpec::Expectations::ExpectationNotMetError)
+Your style.css does not include the css-property 'font-family'
+./spec/exercises/exercise_2_spec.rb:26:in `block (5 levels) in &lt;top (required)&gt;'    </failure>
+  </testcase>
+  <testcase name="Exercise 2: The index.html includes a style.css which contains the css property font-size" time="0.122344">
+  </testcase>
+  <testcase name="Exercise 2: The index.html includes a style.css which contains the css property font-weight" time="0.120625">
+    <failure type="RSpec::Expectations::ExpectationNotMetError" message="Your style.css does not include the css-property 'font-weight'">
+Your style.css does not include the css-property 'font-weight' (RSpec::Expectations::ExpectationNotMetError)
+Your style.css does not include the css-property 'font-weight'
+./spec/exercises/exercise_2_spec.rb:26:in `block (5 levels) in &lt;top (required)&gt;'    </failure>
+  </testcase>
+  <testcase name="Exercise 2: The index.html includes a style.css which contains the css property margin" time="0.121431">
+    <failure type="RSpec::Expectations::ExpectationNotMetError" message="Your style.css does not include the css-property 'margin'">
+Your style.css does not include the css-property 'margin' (RSpec::Expectations::ExpectationNotMetError)
+Your style.css does not include the css-property 'margin'
+./spec/exercises/exercise_2_spec.rb:26:in `block (5 levels) in &lt;top (required)&gt;'    </failure>
+  </testcase>
+  <testcase name="Exercise 2: The index.html includes a style.css which contains the css property padding" time="0.11922">
+    <failure type="RSpec::Expectations::ExpectationNotMetError" message="Your style.css does not include the css-property 'padding'">
+Your style.css does not include the css-property 'padding' (RSpec::Expectations::ExpectationNotMetError)
+Your style.css does not include the css-property 'padding'
+./spec/exercises/exercise_2_spec.rb:26:in `block (5 levels) in &lt;top (required)&gt;'    </failure>
+  </testcase>
+  <testcase name="Exercise 2: The index.html includes a style.css which contains the css property transition" time="0.120287">
+    <failure type="RSpec::Expectations::ExpectationNotMetError" message="Your style.css does not include the css-property 'transition'">
+Your style.css does not include the css-property 'transition' (RSpec::Expectations::ExpectationNotMetError)
+Your style.css does not include the css-property 'transition'
+./spec/exercises/exercise_2_spec.rb:26:in `block (5 levels) in &lt;top (required)&gt;'    </failure>
+  </testcase>
+  <testcase name="Exercise 2: The index.html includes a style.css which contains the css property transform" time="0.119834">
+    <failure type="RSpec::Expectations::ExpectationNotMetError" message="Your style.css does not include the css-property 'transform'">
+Your style.css does not include the css-property 'transform' (RSpec::Expectations::ExpectationNotMetError)
+Your style.css does not include the css-property 'transform'
+./spec/exercises/exercise_2_spec.rb:26:in `block (5 levels) in &lt;top (required)&gt;'    </failure>
+  </testcase>
+</testsuite>

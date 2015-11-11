@@ -16,8 +16,10 @@ namespace :exercise do
   task run_and_report: ['spec_exercises', 'exercise:report']
 
   desc 'Run tests with a real google chrome browser'
-  task :dev do
-    ENV['TEST_ENV'] = 'development'
+  task dev: ['ci:setup:rspec'] do
+    # TODO Complex Config
+    ENV['RAILS_ENV'] = 'development'
+    ENV['TEST_ENV']  = 'development'
     Rake::Task['exercise:run_and_report'].invoke
   end
 

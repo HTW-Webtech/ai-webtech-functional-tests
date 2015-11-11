@@ -1,32 +1,34 @@
 require 'typhoeus'
+require 'json'
+require 'complex_config/rude'
 
 module TestReporter
   class Reporter
-    def self.report(reports)
-      reports.each do |report|
+    class << self
+      def report(report)
         new(report).post
       end
     end
+
+    attr_reader :report
 
     def initialize(report)
       @report = report
     end
 
     def url
-      # TODO
-      # - exercise url
-      # admin.htw-webtech.com/api-v1/exercise_results/:app_name/:exercise_id.:format
-      # admin.htw-webtech.com/api-v1/exercise_results/:app_name/:exercise_id.:format
+      tpl = cc(:site).api_uri_template
+      tpl.gsub('{app_name}', report[:app_name].to_s).
+          gsub('{exercise_id}', report[:exercise_id].to_s)
     end
 
     def body
-      { report: report }
+      JSON.generate({ report: report })
     end
 
     def headers
-      # TODO:
-      # - Add signed cipher header
       {
+        'x-created-with' => 'test-reporter'
       }
     end
 

@@ -2,11 +2,18 @@ require 'nokogiri'
 
 module TestReporter
   class Inspector
-    def self.fetch_reports
-      xml_files = Dir["#{File.absolute_path(__FILE__ + '/../../spec/reports')}/*"]
-      xml_files.each_with_object([]) do |xml_file, reports|
-        xml_report = IO.binread(xml_file)
-        reports << new(xml_report).report
+    class << self
+      def fetch_report
+        new(IO.binread(report_file_path)).report
+      end
+
+      def report_file_path(reports_path: default_reports_path)
+        xml_files = Dir["#{reports_path}/*.xml"]
+        xml_files.sort_by(&:length).last
+      end
+
+      def default_reports_path
+        File.absolute_path(__FILE__ + '/../../../spec/reports')
       end
     end
 
