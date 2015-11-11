@@ -21,7 +21,6 @@ GEM
     ci_reporter_rspec (1.0.0)
       ci_reporter (~> 2.0)
       rspec (>= 2.14, < 4)
-    cipher-base64 (0.0.3)
     cliver (0.3.2)
     complex_config (0.3.0)
       json
@@ -80,7 +79,6 @@ DEPENDENCIES
   capybara
   chromedriver-helper
   ci_reporter_rspec
-  cipher-base64
   complex_config
   nokogiri
   poltergeist
