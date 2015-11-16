@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Exercise 2: The index.html" tests="2" time="1.514314" failures="0" errors="0" skipped="0" timestamp="2015-11-11T18:51:26+01:00">
-  <testcase name="Exercise 2: The index.html includes a link-tag with rel=&quot;stylesheet&quot;" time="1.397494">
-  </testcase>
-  <testcase name="Exercise 2: The index.html includes a link-tag referencing an external style.css file" time="0.116048">
-  </testcase>
-</testsuite>

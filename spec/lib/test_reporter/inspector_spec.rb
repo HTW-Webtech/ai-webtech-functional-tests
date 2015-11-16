@@ -1,33 +1,76 @@
 require 'spec_helper'
 
 describe TestReporter::Inspector do
-  describe '.fetch_report' do
-    it 'returns the correct report' do
-      expect(described_class.fetch_report).to eq({ failures_count: 12 })
+  let(:failure_reports_path) { File.absolute_path(__FILE__ + '/../../../support/files/failure-and-error-reports') }
+  let(:success_reports_path) { File.absolute_path(__FILE__ + '/../../../support/files/success-reports') }
+  let(:error_file)   { "#{failure_reports_path}/SPEC-1-error.xml" }
+  let(:failure_file) { "#{failure_reports_path}/SPEC-1-failure.xml" }
+  let(:success_file) { "#{success_reports_path}/SPEC-no-failures-or-errors.xml" }
+
+  describe 'Class' do
+    subject { described_class }
+
+    describe '.fetch_report' do
+      context 'for a success' do
+        let(:result) { subject.fetch_report(reports_path: success_reports_path) }
+
+        it 'returns a success' do
+          expect(result[:success]).to eq true
+        end
+      end
+
+      context 'for a failure' do
+        let(:result) { subject.fetch_report(reports_path: failure_reports_path) }
+
+        it 'returns a failure' do
+          expect(result[:success]).to eq false
+        end
+      end
+    end
+
+    describe '.default_reports_path' do
+      it 'returns the correct report path' do
+        expect(subject.default_reports_path).to eq File.absolute_path(__FILE__ + '/../../../reports')
+      end
+    end
+
+    describe '.report_files' do
+      let(:report_files) { subject.report_files(reports_path: failure_reports_path) }
+
+      it 'returns the correct report file' do
+        expect(report_files).to include error_file
+        expect(report_files).to include failure_file
+      end
     end
   end
 
-  describe '.default_reports_path' do
-    it 'returns the correct report path' do
-      expect(described_class.default_reports_path).to eq File.absolute_path(__FILE__ + '/../../../reports')
+  describe 'Instance' do
+    subject { described_class.new(IO.binread(failure_file)) }
+
+    describe '#failures_count' do
+      it 'returns 1' do
+        expect(subject.failures_count).to eq 1
+      end
     end
-  end
 
-  describe '.report_file' do
-    let(:reports_path) { File.absolute_path(__FILE__ + '/../../../support/files') }
-    let(:expected_file_path) { "#{reports_path}/SPEC-Exercise-2-The-index-html-includes-a-style-css.xml" }
-
-    it 'returns the correct report file' do
-      expect(described_class.report_file_path(reports_path: reports_path)).to eq expected_file_path
+    describe '#errors_count' do
+      it 'returns 0' do
+        expect(subject.errors_count).to eq 0
+      end
     end
-  end
 
-  describe '#failure_count' do
-    let(:two_failures_xml) { read_support_file('2_failures.xml') }
-    let(:reporter) { described_class.new(two_failures_xml) }
+    describe '#report' do
+      it 'returns the correct report' do
+        expect(subject.report).to eq ({ failures_count: 1, errors_count: 0, success: false })
+      end
 
-    it 'returns 2 for the "2_failures.xml"' do
-      expect(reporter.failures_count).to eq 2
+      context 'with a success xml' do
+        subject { described_class.new(IO.binread(success_file)) }
+
+        it 'returns the correct report' do
+          expect(subject.report).to eq ({ failures_count: 0, errors_count: 0, success: true })
+        end
+      end
     end
   end
 end
