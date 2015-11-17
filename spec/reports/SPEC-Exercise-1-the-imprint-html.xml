@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Exercise 1 the imprint.html" tests="2" time="0.45206" failures="0" errors="0" skipped="0" timestamp="2015-11-17T06:32:52+01:00">
+  <testcase name="Exercise 1 the imprint.html includes the telephon-number as anchor" time="0.360098">
+  </testcase>
+  <testcase name="Exercise 1 the imprint.html includes the address in a proper &lt;address&gt;-Tag" time="0.09011">
+  </testcase>
+</testsuite>
