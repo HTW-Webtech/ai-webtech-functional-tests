@@ -1,11 +1,13 @@
 require 'capybara/rspec'
 require 'capybara/poltergeist'
-Capybara.default_driver = :poltergeist
+Capybara.default_driver = :rack_test
 Capybara.javascript_driver = :poltergeist
 
 if ENV['TEST_ENV'] == 'development'
   Capybara.register_driver :selenium_chrome do |app|
-    Capybara::Selenium::Driver.new(app, browser: :chrome)
+    opts = { browser: :chrome }
+    Capybara::Selenium::Driver.new(app, opts)
   end
-  Capybara.current_driver = :selenium_chrome
+  Capybara.default_driver = :selenium_chrome
+  Capybara.javascript_driver = :selenium_chrome
 end
