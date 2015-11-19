@@ -22,7 +22,7 @@ GEM
       ci_reporter (~> 2.0)
       rspec (>= 2.14, < 4)
     cliver (0.3.2)
-    complex_config (0.3.1)
+    complex_config (0.5.0)
       json
       tins
     diff-lcs (1.2.5)

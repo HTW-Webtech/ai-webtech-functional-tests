@@ -8,7 +8,6 @@ Dir[File.expand_path('../support', __FILE__) + '/**/*.rb'].each { |rb| require r
 require_relative '../lib/test_reporter'
 
 # Load configuration from ENV
-$TEST_ENV          = ENV.fetch('TEST_ENV', false)
 $EXERCISE_ID       = ENV.fetch('EXERCISE_ID')
 $EXERCISE_BASE_URL = ENV.fetch('EXERCISE_BASE_URL')
 $USER_NAME         = ENV.fetch('USER_NAME')
@@ -36,7 +35,7 @@ RSpec.configure do |config|
   end
 
   # Local test settings
-  if $TEST_ENV == 'development'
+  if ComplexConfig::Provider.env == 'development'
     $SERVER_PORT = ENV.fetch('DEV_SERVER_PORT')
     config.before :suite do
       # TODO: Extract into some helper code
