@@ -14,6 +14,7 @@ describe 'Exercise 2:', type: :feature, js: true do
       page.find(:xpath, "//head/link[contains(@href, 'style.css')]", visible: false)
     end
 
+    # PROBLEM: Limiting students to use only 1 css file
     context 'includes a style.css' do
       let(:style_node) { page.find(:xpath, "//head/link[contains(@href, 'style.css')]", visible: false) }
       let(:style_url) { "#{INDEX_URL}/#{style_node['href']}" }
