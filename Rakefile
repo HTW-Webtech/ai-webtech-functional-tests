@@ -1,4 +1,3 @@
-require 'ci/reporter/rake/rspec'
 require 'rspec/core/rake_task'
 require_relative 'lib/test_reporter'
 require 'complex_config/rude'
@@ -19,14 +18,18 @@ end
 
 namespace :exercise do
   task run_and_report: ['spec_exercises', 'exercise:report']
+  task :ci_reporter do
+    require 'ci/reporter/rake/rspec'
+    Rake::Task['ci:setup:rspec'].invoke
+  end
 
   desc 'Run tests with a real google chrome browser'
-  task dev: ['ci:setup:rspec'] do
+  task dev: [:ci_reporter] do
     Rake::Task['exercise:run_and_report'].invoke
   end
 
   desc 'Run tests with a headless phantomjs'
-  task prd: ['ci:setup:rspec'] do
+  task prd: [:ci_reporter] do
     Rake::Task['exercise:run_and_report'].invoke
   end
 
