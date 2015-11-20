@@ -32,7 +32,9 @@ namespace :exercise do
 
   desc 'Post report for test to exercise service'
   task :report do
-    TestReporter.run
+    app_name    = ENV.fetch('APP_NAME')
+    exercise_id = ENV.fetch('EXERCISE_ID')
+    TestReporter.run(app_name: app_name, exercise_id: exercise_id)
   end
 end
 
