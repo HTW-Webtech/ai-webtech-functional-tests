@@ -10,8 +10,6 @@ require_relative '../lib/test_reporter'
 # Load configuration from ENV
 $EXERCISE_ID       = ENV.fetch('EXERCISE_ID')
 $EXERCISE_BASE_URL = ENV.fetch('EXERCISE_BASE_URL')
-$USER_NAME         = ENV.fetch('USER_NAME')
-$USER_NAME         = ENV.fetch('USER_EMAIL')
 
 RSpec.configure do |config|
   config.include ValidatorHelper
