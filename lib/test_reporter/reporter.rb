@@ -14,8 +14,6 @@ module TestReporter
       Typhoeus.post(url, body: body, headers: headers)
     end
 
-    private
-
     def url
       tpl = cc(:site).api_uri_template
       tpl.gsub('{app_name}', report[:app_name].to_s).
