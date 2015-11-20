@@ -8,7 +8,7 @@ module LocalWebServer
       end
     end
 
-    config.before :suite do
+    config.before :all, type: :feature do
       puts "Bringing up local webserver on port #{port}"
       $SERVER_PID = fork do
         FileUtils.cd server_root_path do
