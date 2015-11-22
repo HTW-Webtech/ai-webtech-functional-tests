@@ -17,7 +17,13 @@ describe 'Exercise 2:', type: :feature, js: true do
     context 'includes a style.css' do
       let(:style_nodes) { page.find_all(:xpath, "//head/link[contains(@rel, 'stylesheet')]", visible: false) }
       let(:style_urls) do
-        style_nodes.map { |node| node['href'] }
+        style_nodes.map do |node|
+          node['href'].dup.tap do |href|
+            if !href.start_with? "http"
+              href = "#{INDEX_URL}/#{href}"
+            end
+          end
+        end
       end
       let(:style) do
         style_urls.map do |url|
