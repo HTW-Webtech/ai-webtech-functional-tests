@@ -7,17 +7,23 @@ describe 'Exercise 2:', type: :feature, js: true do
     before { visit INDEX_URL }
 
     it 'includes a link-tag with rel="stylesheet"' do
-      page.find(:xpath, "//head/link[contains(@rel, 'stylesheet')]", visible: false)
+      page.find_all(:xpath, "//head/link[contains(@rel, 'stylesheet')]", visible: false)
     end
 
     it 'includes a link-tag referencing an external style.css file' do
-      page.find(:xpath, "//head/link[contains(@href, 'style.css')]", visible: false)
+      page.find_all(:xpath, "//head/link[contains(@href, 'style.css')]", visible: false)
     end
 
     context 'includes a style.css' do
-      let(:style_node) { page.find(:xpath, "//head/link[contains(@href, 'style.css')]", visible: false) }
-      let(:style_url) { "#{INDEX_URL}/#{style_node['href']}" }
-      let(:style) { open(style_url).read }
+      let(:style_nodes) { page.find_all(:xpath, "//head/link[contains(@rel, 'stylesheet')]", visible: false) }
+      let(:style_urls) do
+        style_nodes.map { |node| "#{INDEX_URL}/#{node['href']}" }
+      end
+      let(:style) do
+        style_urls.map do |url|
+          open(url).read
+        end.join("\n")
+      end
 
       %w[background border border-radius color display content font-family
       font-size font-weight margin padding transition transform].each do |expected_property|
