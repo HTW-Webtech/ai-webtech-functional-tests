@@ -58,21 +58,25 @@ describe '', type: :feature, js: true do
 
       click_on 'Lernen'
       click_on 'Beginn'
+      expect(page.body).to have_content 'Karte: 1/3'
+
       expect(page.body).to have_content 'Kindergarten'
       click_on 'Umdrehen'
       expect(page.body).to have_content 'kindergarten'
       click_on 'Ja'
 
+      expect(page.body).to have_content 'Karte: 2/3'
       expect(page.body).to have_content 'Schachbrett'
       click_on 'Nein'
 
+      expect(page.body).to have_content 'Karte: 3/3'
       expect(page.body).to have_content 'Badezimmer'
       click_on 'Nein'
 
       click_on 'Start'
       expect(page.body).to have_content "Karten: 3"
       expect(page.body).to have_content "Richtig beantwortet: 1"
-      expect(page.body).to have_content "Falsch beantwortet: 1"
+      expect(page.body).to have_content "Falsch beantwortet: 2"
     end
   end
 end
