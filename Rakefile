@@ -1,6 +1,10 @@
-require 'ci/reporter/rake/rspec'
 require 'rspec/core/rake_task'
 require_relative 'lib/test_reporter'
+require 'complex_config/rude'
+
+ComplexConfig.configure do |config|
+  config.env = ENV['TESTS_ENV'] || 'development'
+end
 
 RSpec::Core::RakeTask.new(:spec_lib) do |c|
   c.pattern = "spec/lib/**/*_spec.rb"
@@ -14,24 +18,26 @@ end
 
 namespace :exercise do
   task run_and_report: ['spec_exercises', 'exercise:report']
+  task :ci_reporter do
+    require 'ci/reporter/rake/rspec'
+    Rake::Task['ci:setup:rspec'].invoke
+  end
 
   desc 'Run tests with a real google chrome browser'
-  task dev: ['ci:setup:rspec'] do
-    # TODO Complex Config
-    ENV['RAILS_ENV'] = 'development'
-    ENV['TEST_ENV']  = 'development'
+  task dev: [:ci_reporter] do
     Rake::Task['exercise:run_and_report'].invoke
   end
 
   desc 'Run tests with a headless phantomjs'
-  task prd: ['ci:setup:rspec'] do
-    ENV['TEST_ENV'] = 'production'
+  task prd: [:ci_reporter] do
     Rake::Task['exercise:run_and_report'].invoke
   end
 
   desc 'Post report for test to exercise service'
   task :report do
-    TestReporter.run
+    app_name    = ENV.fetch('APP_NAME')
+    exercise_id = ENV.fetch('EXERCISE_ID')
+    TestReporter.run(app_name: app_name, exercise_id: exercise_id)
   end
 end
 

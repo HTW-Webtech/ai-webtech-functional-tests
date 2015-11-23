@@ -4,16 +4,14 @@ require 'complex_config/rude'
 
 module TestReporter
   class Reporter
-    class << self
-      def report(report)
-        new(report).post
-      end
-    end
-
     attr_reader :report
 
     def initialize(report)
       @report = report
+    end
+
+    def sent_report
+      Typhoeus.post(url, body: body, headers: headers)
     end
 
     def url
@@ -30,10 +28,6 @@ module TestReporter
       {
         'x-created-with' => 'test-reporter'
       }
-    end
-
-    def post
-      Typhoeus.post(url, body: body, headers: headers)
     end
   end
 end

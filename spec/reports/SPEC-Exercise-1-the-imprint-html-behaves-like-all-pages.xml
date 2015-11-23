@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Exercise 1 the imprint.html behaves like all pages" tests="5" time="5.152222" failures="0" errors="0" skipped="0" timestamp="2015-11-17T06:32:52+01:00">
+  <testcase name="Exercise 1 the imprint.html behaves like all pages includes the product-logo" time="0.078977">
+  </testcase>
+  <testcase name="Exercise 1 the imprint.html behaves like all pages has the correct headline" time="0.079598">
+  </testcase>
+  <testcase name="Exercise 1 the imprint.html behaves like all pages links to &quot;contact.html&quot;" time="0.087025">
+  </testcase>
+  <testcase name="Exercise 1 the imprint.html behaves like all pages links to &quot;imprint.html&quot;" time="0.091435">
+  </testcase>
+  <testcase name="Exercise 1 the imprint.html behaves like all pages is valid according to the W3C Html Checker: https://validator.w3.org/" time="4.712647">
+  </testcase>
+</testsuite>
