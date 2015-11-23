@@ -12,7 +12,7 @@ module TestReporter
 
     def sent_report
       puts "Delivering #{body},][3\n\nheaders: #{headers}\n\nto #{url}" if ENV['VERBOSE']
-      Typhoeus.post(url, body: '', headers: headers)
+      Typhoeus.post(url, body: body, headers: headers)
     end
 
     def url
@@ -22,7 +22,7 @@ module TestReporter
     end
 
     def body
-      JSON.generate({ report: report })
+      JSON.generate({ exercise_result: report })
     end
 
     def headers
