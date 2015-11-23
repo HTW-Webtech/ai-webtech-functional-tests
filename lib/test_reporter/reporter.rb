@@ -11,6 +11,7 @@ module TestReporter
     end
 
     def sent_report
+      puts "Delivering #{body.inspect} to #{url}" if ENV['VERBOSE']
       Typhoeus.post(url, body: body, headers: headers)
     end
 
