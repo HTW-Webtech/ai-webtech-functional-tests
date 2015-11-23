@@ -1,5 +1,10 @@
 require 'fileutils'
 require 'byebug'
+require 'complex_config/rude'
+
+ComplexConfig.configure do |config|
+  config.env = ENV['TESTS_ENV'] || 'development'
+end
 
 # Load support files
 Dir[File.expand_path('../support', __FILE__) + '/**/*.rb'].each { |rb| require rb }

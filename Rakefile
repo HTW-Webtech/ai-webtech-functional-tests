@@ -1,10 +1,5 @@
 require 'rspec/core/rake_task'
 require_relative 'lib/test_reporter'
-require 'complex_config/rude'
-
-ComplexConfig.configure do |config|
-  config.env = ENV['TESTS_ENV'] || 'development'
-end
 
 RSpec::Core::RakeTask.new(:spec_lib) do |c|
   c.pattern = "spec/lib/**/*_spec.rb"
@@ -25,11 +20,13 @@ namespace :exercise do
 
   desc 'Run tests with a real google chrome browser'
   task dev: [:ci_reporter] do
+    ENV['TESTS_ENV'] = 'development'
     Rake::Task['exercise:run_and_report'].invoke
   end
 
   desc 'Run tests with a headless phantomjs'
   task prd: [:ci_reporter] do
+    ENV['TESTS_ENV'] = 'production'
     Rake::Task['exercise:run_and_report'].invoke
   end
 
