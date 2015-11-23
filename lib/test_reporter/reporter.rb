@@ -11,8 +11,8 @@ module TestReporter
     end
 
     def sent_report
-      puts "Delivering #{body.inspect} to #{url}" if ENV['VERBOSE']
-      Typhoeus.post(url, body: body, headers: headers)
+      puts "Delivering #{body},][3\n\nheaders: #{headers}\n\nto #{url}" if ENV['VERBOSE']
+      Typhoeus.post(url, body: '', headers: headers)
     end
 
     def url
@@ -27,6 +27,7 @@ module TestReporter
 
     def headers
       {
+        'Content-Type'   => 'application/json',
         'x-created-with' => 'test-reporter'
       }
     end
