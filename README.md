@@ -11,6 +11,11 @@ run `rake` # to spec this code
 
 
 # TODOS
+- [ ] Third spec sould compare Strings, e.g.
+  actual_string = page.find('.css-selector').content
+  expect(actual_string).to eq 'Test'
+  This way its easier to debug when a test fails.
+
 - [ ] Add desc
 - [ ] Extract TestReporting from running tests
 - [ ] Extract TestReporter into gem?
