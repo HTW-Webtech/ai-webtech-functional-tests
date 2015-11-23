@@ -20,18 +20,20 @@ namespace :exercise do
 
   desc 'Run tests with a real google chrome browser'
   task dev: [:ci_reporter] do
-    ENV['TESTS_ENV'] = 'development'
     Rake::Task['exercise:run_and_report'].invoke
   end
 
   desc 'Run tests with a headless phantomjs'
   task prd: [:ci_reporter] do
-    ENV['TESTS_ENV'] = 'production'
     Rake::Task['exercise:run_and_report'].invoke
   end
 
   desc 'Post report for test to exercise service'
   task :report do
+    ComplexConfig.configure do |config|
+      config.env = ENV.fetch('TESTS_ENV')
+    end
+
     app_name    = ENV.fetch('APP_NAME')
     exercise_id = ENV.fetch('EXERCISE_ID')
     TestReporter.run(app_name: app_name, exercise_id: exercise_id)

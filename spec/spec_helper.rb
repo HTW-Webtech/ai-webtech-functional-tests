@@ -3,7 +3,7 @@ require 'byebug'
 require 'complex_config/rude'
 
 ComplexConfig.configure do |config|
-  config.env = ENV['TESTS_ENV'] || 'development'
+  config.env = ENV.fetch('TESTS_ENV')
 end
 
 # Load support files
