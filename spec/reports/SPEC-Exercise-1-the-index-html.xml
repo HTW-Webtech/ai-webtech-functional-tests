@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Exercise 1 the index.html" tests="1" time="2.466802" failures="0" errors="0" skipped="0" timestamp="2015-11-17T06:32:00+01:00">
-  <testcase name="Exercise 1 the index.html has a p-tag with the Bazinga product description text &quot;Lorem Ipsum&quot;" time="2.465917">
-  </testcase>
-</testsuite>

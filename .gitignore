@@ -1,2 +1,2 @@
 .envrc
-spec/reports
+spec/reports/*

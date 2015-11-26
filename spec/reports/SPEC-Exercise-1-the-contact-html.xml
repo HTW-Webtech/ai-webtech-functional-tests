@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Exercise 1 the contact.html" tests="1" time="0.398802" failures="0" errors="0" skipped="0" timestamp="2015-11-17T06:32:44+01:00">
-  <testcase name="Exercise 1 the contact.html has a form with action=&quot;/submit&quot;, and post-method" time="0.397665">
-  </testcase>
-</testsuite>
