@@ -1,6 +1,7 @@
 require 'fileutils'
 require 'byebug'
 require 'complex_config/rude'
+require 'html_validation'
 
 ComplexConfig.configure do |config|
   config.env = ENV.fetch('TESTS_ENV')
@@ -17,8 +18,8 @@ $EXERCISE_ID       = ENV.fetch('EXERCISE_ID')
 $EXERCISE_BASE_URL = ENV.fetch('EXERCISE_BASE_URL')
 
 RSpec.configure do |config|
-  config.include ValidatorHelper
   config.include SupportFiles
+  config.include PageValidations
 
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true

@@ -17,9 +17,8 @@ shared_examples 'all pages' do |url|
     page.find(:xpath, "//a[contains(@href, 'imprint.html')]")
   end
 
-  it 'is valid according to the W3C Html Checker: https://validator.w3.org/' do
-    expect(page_markup_valid?(url)).to eq(true),
-      "Your HTML markup seems be invalid. See for yourself on: https://validator.w3.org/check?uri=#{url}"
+  it 'is valid html according to html-tidy' do
+    expect(page).to have_valid_html
   end
 end
 

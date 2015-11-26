@@ -6,6 +6,10 @@ describe 'Exercise 2:', type: :feature, js: true do
   context 'The index.html' do
     before { visit INDEX_URL }
 
+    it 'has valid markup' do
+      expect(page).to have_valid_html
+    end
+
     it 'includes a link-tag with rel="stylesheet"' do
       page.find_all(:xpath, "//head/link[contains(@rel, 'stylesheet')]", visible: false)
     end
