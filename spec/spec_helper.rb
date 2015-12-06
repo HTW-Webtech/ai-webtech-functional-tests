@@ -34,8 +34,10 @@ RSpec.configure do |config|
       opts = { browser: :chrome }
       Capybara::Selenium::Driver.new(app, opts)
     end
-    Capybara.default_driver = :selenium_chrome
-    Capybara.javascript_driver = :selenium_chrome
+    # Capybara.default_driver = :selenium_chrome
+    # Capybara.javascript_driver = :selenium_chrome
+    Capybara.default_driver = :custom_poltergeist
+    Capybara.javascript_driver = :custom_poltergeist
 
     server_port = ENV.fetch('DEV_SERVER_PORT')
     server_root_path = "solutions/exercise-#{$EXERCISE_ID}"
