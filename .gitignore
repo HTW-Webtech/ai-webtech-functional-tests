@@ -1,2 +1,3 @@
 .envrc
 spec/reports/*
+.byebug_history
