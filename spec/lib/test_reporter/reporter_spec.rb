@@ -15,21 +15,21 @@ describe TestReporter::Reporter do
 
   describe '.body' do
     it 'creates the correct body' do
-      expect(subject.body).to eq '{"report":{"success":true,"app_name":"1-cherry-blossom","exercise_id":"1"}}'
+      expect(subject.body).to eq '{"exercise_result":{"success":true,"app_name":"1-cherry-blossom","exercise_id":"1"}}'
     end
 
     context 'for a failure' do
       subject { described_class.new(failure_report) }
 
       it 'creates the correct body' do
-        expect(subject.body).to eq '{"report":{"success":false,"app_name":"1-cherry-blossom","exercise_id":"1"}}'
+        expect(subject.body).to eq '{"exercise_result":{"success":false,"app_name":"1-cherry-blossom","exercise_id":"1"}}'
       end
     end
   end
 
   describe '.headers' do
     it 'creates the correct headers' do
-      expect(subject.headers).to eq({ 'x-created-with' => 'test-reporter' })
+      expect(subject.headers).to eq({ 'Content-Type' => 'application/json', 'x-created-with' => 'test-reporter' })
     end
   end
 end
