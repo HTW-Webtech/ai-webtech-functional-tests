@@ -1,13 +1,20 @@
 require 'capybara/rspec'
 require 'capybara/poltergeist'
-Capybara.default_driver = :poltergeist
-Capybara.javascript_driver = :poltergeist
 
-if ENV['TESTS_ENV'] == 'development'
-  Capybara.register_driver :selenium_chrome do |app|
-    opts = { browser: :chrome }
-    Capybara::Selenium::Driver.new(app, opts)
-  end
-  Capybara.default_driver = :selenium_chrome
-  Capybara.javascript_driver = :selenium_chrome
+Capybara.register_driver :custom_poltergeist do |app|
+  opts = {
+    js_errors: true,
+    debug: false,
+    extensions: [
+      # Patching Function.prototype.bind since phantomjs 1.9.8 seems
+      # to have a bug: https://github.com/seiyria/bootstrap-slider/issues/344
+      # PhantomJs 2 fixed that bug but is not yet available as a static binary
+      # installable via npm phantomjs package.
+      File.expand_path('../phantomjs-1.9.8-bind-fix.js', __FILE__)
+    ]
+  }
+  Capybara::Poltergeist::Driver.new(app, opts)
 end
+
+Capybara.default_driver = :custom_poltergeist
+Capybara.javascript_driver = :custom_poltergeist

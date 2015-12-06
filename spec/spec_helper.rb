@@ -30,6 +30,13 @@ RSpec.configure do |config|
   end
 
   if ComplexConfig::Provider.env == 'development'
+    Capybara.register_driver :selenium_chrome do |app|
+      opts = { browser: :chrome }
+      Capybara::Selenium::Driver.new(app, opts)
+    end
+    Capybara.default_driver = :selenium_chrome
+    Capybara.javascript_driver = :selenium_chrome
+
     server_port = ENV.fetch('DEV_SERVER_PORT')
     server_root_path = "solutions/exercise-#{$EXERCISE_ID}"
     LocalWebServer.setup(port: server_port, server_root_path: server_root_path, config: config)
