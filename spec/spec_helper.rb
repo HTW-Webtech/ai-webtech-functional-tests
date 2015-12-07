@@ -19,6 +19,7 @@ $EXERCISE_BASE_URL = ENV.fetch('EXERCISE_BASE_URL')
 
 RSpec.configure do |config|
   config.include SupportFiles
+  config.include PoltergeistHelper
   config.include PageValidations
 
   config.expect_with :rspec do |expectations|

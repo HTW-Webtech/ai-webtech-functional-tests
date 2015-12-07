@@ -1,5 +1,5 @@
 module PoltergeistHelper
   def clear_local_storage
-    byebug
+    page.execute_script 'localStorage.clear();'
   end
 end
