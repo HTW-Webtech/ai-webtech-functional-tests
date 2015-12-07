@@ -5,6 +5,7 @@ describe '', type: :feature, js: true do
     before do
       visit INDEX_URL
       clear_storage
+      click_on 'Start'
     end
 
     it 'Zeigt die richtigen Zahlen zu Beginn an' do
@@ -17,8 +18,8 @@ describe '', type: :feature, js: true do
   context 'Auf der "Verwalten" Seite (manage.html)' do
     before do
       visit INDEX_URL
-      click_on 'Verwalten'
       clear_storage
+      click_on 'Verwalten'
     end
 
     it 'Kann ich eine neue Karte hinzufügen: Vorderseite: Badezimmer, Rückseite: bathroom' do
