@@ -9,6 +9,8 @@ describe '', type: :feature, js: true do
     end
 
     it 'Zeigt die richtigen Zahlen zu Beginn an' do
+      clear_storage
+      click_on 'Start'
       expect(page.body).to have_content 'Karten: 0'
       expect(page.body).to have_content 'Richtig beantwortet: 0'
       expect(page.body).to have_content 'Falsch beantwortet: 0'
