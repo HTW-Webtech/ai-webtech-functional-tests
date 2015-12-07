@@ -3,7 +3,7 @@ require 'capybara/poltergeist'
 
 Capybara.register_driver :custom_poltergeist do |app|
   opts = {
-    js_errors: true,
+    js_errors: false,
     debug: false,
     extensions: [
       # Patching Function.prototype.bind since phantomjs 1.9.8 seems
