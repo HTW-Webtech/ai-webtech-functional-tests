@@ -1,6 +1,6 @@
 module PoltergeistHelper
-  def clear_local_storage
-    page.execute_script('if (localStorage && localStorage.clear) localStorage.clear();')
-    page.evaluate_script 'localStorage'
+  def clear_storage
+    page.execute_script 'if (localStorage && localStorage.clear) localStorage.clear();'
+    page.execute_script 'if (sessionStorage && sessionStorage.clear) sessionStorage.clear();'
   end
 end
