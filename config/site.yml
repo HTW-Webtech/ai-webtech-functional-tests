@@ -2,5 +2,5 @@ development:
   api_uri_template: http://admin.htw-webtech.dev:8081/api-v1/exercise_results/{app_name}/{exercise_id}.json
 
 production:
-  api_uri_template: http://admin.htw-webtech.com/api-v1/exercise_results/{app_name}/{exercise_id}.json
+  api_uri_template: https://admin.htw-webtech.com/api-v1/exercise_results/{app_name}/{exercise_id}.json
 
