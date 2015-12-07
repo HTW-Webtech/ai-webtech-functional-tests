@@ -30,13 +30,16 @@ namespace :exercise do
 
   desc 'Post report for test to exercise service'
   task :report do
+    tests_env = ENV.fetch('TESTS_ENV')
     ComplexConfig.configure do |config|
-      config.env = ENV.fetch('TESTS_ENV')
+      config.env = tests_env
     end
 
-    app_name    = ENV.fetch('APP_NAME')
-    exercise_id = ENV.fetch('EXERCISE_ID')
-    TestReporter.run(app_name: app_name, exercise_id: exercise_id)
+    if tests_env != 'development'
+      app_name    = ENV.fetch('APP_NAME')
+      exercise_id = ENV.fetch('EXERCISE_ID')
+      TestReporter.run(app_name: app_name, exercise_id: exercise_id)
+    end
   end
 end
 
