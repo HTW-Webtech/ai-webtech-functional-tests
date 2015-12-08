@@ -4,12 +4,10 @@ describe '', type: :feature, js: true do
   context 'Start (index.html)' do
     before do
       visit INDEX_URL
-      clear_storage
-      click_on 'Start'
+      clear_storage_and_reload
     end
 
     it 'Zeigt die richtigen Zahlen zu Beginn an' do
-      clear_storage
       click_on 'Start'
       expect(page.body).to have_content 'Karten: 0'
       expect(page.body).to have_content 'Richtig beantwortet: 0'
@@ -20,8 +18,8 @@ describe '', type: :feature, js: true do
   context 'Auf der "Verwalten" Seite (manage.html)' do
     before do
       visit INDEX_URL
-      clear_storage
       click_on 'Verwalten'
+      clear_storage_and_reload
     end
 
     it 'Kann ich eine neue Karte hinzufügen: Vorderseite: Badezimmer, Rückseite: bathroom' do
@@ -55,7 +53,7 @@ describe '', type: :feature, js: true do
     before do
       visit INDEX_URL
       click_on 'Lernen'
-      clear_storage
+      clear_storage_and_reload
     end
 
     it 'Ich kann die Demo-Daten laden und eine Runde durchspielen' do

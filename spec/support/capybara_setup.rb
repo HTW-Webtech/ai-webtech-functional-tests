@@ -3,7 +3,7 @@ require 'capybara/poltergeist'
 
 Capybara.register_driver :custom_poltergeist do |app|
   opts = {
-    js_errors: false,
+    js_errors: true,
     debug: false,
     extensions: [
       # Patching Function.prototype.bind since phantomjs 1.9.8 seems
@@ -18,3 +18,4 @@ end
 
 Capybara.default_driver = :custom_poltergeist
 Capybara.javascript_driver = :custom_poltergeist
+Capybara.default_max_wait_time = 5
