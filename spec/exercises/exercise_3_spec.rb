@@ -91,6 +91,7 @@ describe '', type: :feature, js: true do
     let(:flashcard_js_content) { open(flashcard_js_uri).read }
 
     it 'lints the flashcard.js file' do
+      STDOUT.write "\n\n"
       STDOUT.write "JavaScript Linting-Report:\n"
       report = lint(flashcard_js_content)
       report.each do |hint|
@@ -100,6 +101,7 @@ describe '', type: :feature, js: true do
         STDOUT.write("\n")
       end
       STDOUT.write "ENDE des JavaScript Linting-Report:"
+      STDOUT.write "\n\n"
     end
   end
 end
