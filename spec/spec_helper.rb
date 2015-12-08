@@ -21,6 +21,7 @@ RSpec.configure do |config|
   config.include SupportFiles
   config.include PoltergeistHelper
   config.include PageValidations
+  config.include JSHintHelper
 
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true

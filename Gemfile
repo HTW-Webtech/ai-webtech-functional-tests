@@ -7,6 +7,7 @@ gem 'ci_reporter_rspec'
 gem 'nokogiri'
 gem 'typhoeus'
 gem 'html_validation'
+gem 'jshintrb'
 gem 'complex_config', require: 'complex_config/rude'
 
 group :development do

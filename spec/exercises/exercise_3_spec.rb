@@ -1,3 +1,5 @@
+require 'open-uri'
+
 describe '', type: :feature, js: true do
   INDEX_URL = $EXERCISE_BASE_URL
 
@@ -81,6 +83,23 @@ describe '', type: :feature, js: true do
       expect(page.body).to have_content "Karten: 3"
       expect(page.body).to have_content "Richtig beantwortet: 1"
       expect(page.body).to have_content "Falsch beantwortet: 2"
+    end
+  end
+
+  context 'JavaScript Linting with jshint' do
+    let(:flashcard_js_uri) { "#{INDEX_URL}/js/flashcards.js" }
+    let(:flashcard_js_content) { open(flashcard_js_uri).read }
+
+    it 'lints the flashcard.js file' do
+      STDOUT.write "JavaScript Linting-Report:\n"
+      report = lint(flashcard_js_content)
+      report.each do |hint|
+        STDOUT.write("Reason: #{hint['reason']}\n")
+        STDOUT.write("Code: #{hint['evidence']}\n")
+        STDOUT.write("Zeile: #{hint['line']}\n")
+        STDOUT.write("\n")
+      end
+      STDOUT.write "ENDE des JavaScript Linting-Report:"
     end
   end
 end
