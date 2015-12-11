@@ -4,6 +4,8 @@ describe '', type: :feature, js: true do
   INDEX_URL = $EXERCISE_BASE_URL
 
   it 'has a link to the spec file' do
+    STDOUT.write "\n"
+    STDOUT.write "You can find the original spec file here:\n"
     STDOUT.write "https://github.com/HTW-Webtech/ai-webtech-functional-tests/blob/master/spec/exercises/#{File.basename(__FILE__)}\n\n"
   end
 
