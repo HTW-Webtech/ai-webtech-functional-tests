@@ -3,6 +3,10 @@ require 'open-uri'
 describe '', type: :feature, js: true do
   INDEX_URL = $EXERCISE_BASE_URL
 
+  it 'has a link to the spec file' do
+    STDOUT.write "https://github.com/HTW-Webtech/ai-webtech-functional-tests/blob/master/spec/exercises/#{__FILE__}\n\n"
+  end
+
   context 'Start (index.html)' do
     before do
       visit INDEX_URL
