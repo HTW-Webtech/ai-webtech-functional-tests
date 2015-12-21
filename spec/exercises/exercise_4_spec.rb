@@ -14,11 +14,13 @@ describe '', type: :feature, js: true do
     end
 
     it 'Destroys all existing articles' do
+      basic_auth user: 'admin', password: 'admin'
       destroy_links = all('a').select { |a| a.text.downcase == 'destroy' }
       destroy_links.each { |link| link.click }
     end
 
     it 'Creates a new article' do
+      basic_auth user: 'admin', password: 'admin'
       click_on 'New article'
       click_on 'Save Article'
 
@@ -43,6 +45,7 @@ describe '', type: :feature, js: true do
     end
 
     it 'Destroys all existing articles' do
+      basic_auth user: 'admin', password: 'admin'
       destroy_links = all('a').select { |a| a.text.downcase == 'destroy' }
       destroy_links.each { |link| link.click }
     end

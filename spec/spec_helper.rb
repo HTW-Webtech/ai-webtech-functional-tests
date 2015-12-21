@@ -22,6 +22,7 @@ RSpec.configure do |config|
   config.include PoltergeistHelper
   config.include PageValidations
   config.include JSHintHelper
+  config.include BasicAuthHelper
 
   config.backtrace_exclusion_patterns << /gems/
 
@@ -43,7 +44,7 @@ RSpec.configure do |config|
     Capybara.default_driver = :custom_poltergeist
     Capybara.javascript_driver = :custom_poltergeist
 
-    server_port = ENV.fetch('DEV_SERVER_PORT')
+    server_port = ENV.fetch('DEV_SERVER_PORT', 0)
     server_root_path = "solutions/exercise-#{$EXERCISE_ID}"
     LocalWebServer.setup(port: server_port, server_root_path: server_root_path, config: config)
   end
