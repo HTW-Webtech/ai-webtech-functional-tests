@@ -96,7 +96,7 @@ describe '', type: :feature, js: true do
     let(:flashcard_js_uri) { "#{INDEX_URL}/js/flashcards.js" }
     let(:flashcard_js_content) { open(flashcard_js_uri).read }
 
-    it 'lints the flashcard.js file' do
+    it 'lints the flashcards.js file' do
       STDOUT.write "\n\n"
       STDOUT.write "JavaScript Linting-Report:\n"
       report = lint(flashcard_js_content)
