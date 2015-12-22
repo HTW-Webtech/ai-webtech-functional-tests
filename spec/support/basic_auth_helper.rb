@@ -1,5 +1,5 @@
 module BasicAuthHelper
-	def basic_auth(user: user, password: password)
+	def basic_auth(user:, password:)
     encoded_login = ["#{user}:#{password}"].pack("m*")
     encoded_login = encoded_login.chomp # Remove trailing newline
     page.driver.add_header 'Authorization', "Basic #{encoded_login}"
