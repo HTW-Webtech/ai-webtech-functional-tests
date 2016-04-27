@@ -15,6 +15,7 @@ require_relative '../lib/test_reporter'
 
 # Load configuration from ENV
 $EXERCISE_ID       = ENV.fetch('EXERCISE_ID')
+$EXERCISE_NAME     = ENV.fetch('EXERCISE_NAME')
 $EXERCISE_BASE_URL = ENV.fetch('EXERCISE_BASE_URL')
 
 RSpec.configure do |config|
@@ -45,7 +46,7 @@ RSpec.configure do |config|
     Capybara.javascript_driver = :custom_poltergeist
 
     server_port = ENV.fetch('DEV_SERVER_PORT', 0)
-    server_root_path = "solutions/exercise-#{$EXERCISE_ID}"
+    server_root_path = "solutions/exercise-#{$EXERCISE_NAME}"
     LocalWebServer.setup(port: server_port, server_root_path: server_root_path, config: config)
   end
 end
