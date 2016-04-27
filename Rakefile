@@ -7,7 +7,9 @@ RSpec::Core::RakeTask.new(:spec_lib) do |c|
 end
 
 RSpec::Core::RakeTask.new(:spec_exercises) do |c|
-  c.pattern = "spec/exercises/#{ENV.fetch('EXERCISE_NAME')}_spec.rb"
+  spec_file = File.expand_path("../spec/exercises/#{ENV.fetch('EXERCISE_NAME')}_spec.rb", __FILE__)
+  fail "There is no spec for this exercise" unless File.exists? spec_file
+  c.pattern = spec_file
   c.verbose = false
 end
 
