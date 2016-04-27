@@ -7,7 +7,7 @@ RSpec::Core::RakeTask.new(:spec_lib) do |c|
 end
 
 RSpec::Core::RakeTask.new(:spec_exercises) do |c|
-  c.pattern = "spec/exercises/#{ENV['EXERCISE_name']}_spec.rb"
+  c.pattern = "spec/exercises/#{ENV['EXERCISE_NAME']}_spec.rb"
   c.verbose = false
 end
 
