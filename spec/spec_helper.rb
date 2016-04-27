@@ -15,6 +15,7 @@ require_relative '../lib/test_reporter'
 
 # Load configuration from ENV
 $EXERCISE_ID       = ENV.fetch('EXERCISE_ID')
+$APP_NAME          = ENV.fetch('APP_NAME')
 $EXERCISE_NAME     = ENV.fetch('EXERCISE_NAME')
 $EXERCISE_BASE_URL = ENV.fetch('EXERCISE_BASE_URL')
 

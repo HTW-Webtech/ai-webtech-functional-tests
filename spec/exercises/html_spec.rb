@@ -22,7 +22,7 @@ shared_examples 'all pages' do |url|
   # end
 end
 
-describe 'Exercise 1', type: :feature do
+describe 'HTML Übung', type: :feature do
   INDEX_URL   = $EXERCISE_BASE_URL
   CONTACT_URL = "#{INDEX_URL}/contact.html"
   IMPRINT_URL = "#{INDEX_URL}/imprint.html"
