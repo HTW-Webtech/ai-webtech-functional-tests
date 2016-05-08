@@ -25,6 +25,7 @@ RSpec.configure do |config|
   config.include PageValidations
   config.include JSHintHelper
   config.include BasicAuthHelper
+  config.include FindHelper
 
   config.backtrace_exclusion_patterns << /gems/
 

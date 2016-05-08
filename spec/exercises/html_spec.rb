@@ -1,65 +1,71 @@
-shared_examples 'all pages' do |url|
+shared_examples 'all pages and' do |url|
   let(:url) { url }
 
   it 'includes the product-logo' do
-    page.find(:xpath, "//img[contains(@src, 'bazinga-logo.png')]")
+    find_xpath(tag: 'img', attr: 'src', value: 'bazinga-logo.png')
   end
 
   it 'has the correct headline' do
-    page.find(:xpath, "//h1[contains(., 'Bazinga!')]")
+    find_xpath(tag: 'h1', value: 'Bazinga!')
   end
 
   it 'links to "index.html"' do
-    page.find(:xpath, "//a[contains(@href, 'contact.html')]")
+    find_xpath(tag: 'a', attr: 'href', value: 'index.html')
   end
 
   it 'links to "contact.html"' do
-    page.find(:xpath, "//a[contains(@href, 'contact.html')]")
+    find_xpath(tag: 'a', attr: 'href', value: 'contact.html')
   end
 
   it 'links to "imprint.html"' do
-    page.find(:xpath, "//a[contains(@href, 'imprint.html')]")
+    find_xpath(tag: 'a', attr: 'href', value: 'imprint.html')
   end
 
+  it 'has the required meta-tags for `author` and `keywords`' do
+    find_xpath(tag: 'meta', attr: 'name', value: 'author')
+    find_xpath(tag: 'meta', attr: 'name', value: 'keywords')
+  end
+
+  # FIXME: Does not accept meta tag for utf8 charset
   # it 'is valid html according to html-tidy' do
   #   expect(page).to have_valid_html
   # end
 end
 
-describe 'HTML Übung', type: :feature do
+describe 'HTML Übung:', type: :feature do
   INDEX_URL   = $EXERCISE_BASE_URL
   CONTACT_URL = "#{INDEX_URL}/contact.html"
   IMPRINT_URL = "#{INDEX_URL}/imprint.html"
 
-  context 'the index.html' do
-    it_behaves_like 'all pages', INDEX_URL
+  context 'index.html' do
+    it_behaves_like 'all pages and', INDEX_URL
     before { visit INDEX_URL }
 
     it 'has a p-tag containing the Bazinga product message' do
-      page.find(:xpath, "//p[contains(., 'Bazinga! Focus on getting your software')]")
+      find_xpath(tag: 'p', value: 'Bazinga! Focus on getting your software')
     end
   end
 
-  context 'the contact.html' do
-    it_behaves_like 'all pages', CONTACT_URL
+  context 'contact.html' do
+    it_behaves_like 'all pages and', CONTACT_URL
     before { visit CONTACT_URL }
 
-    it 'has a form with action="/submit", and post-method' do
-      page.find(:xpath, "//form")
-      page.find(:xpath, "//form[contains(@method, 'post')]")
+    it 'has a form with action="/contact", and method="/post"' do
+      find_xpath(tag: 'form', attr: 'method', value: 'post')
+      find_xpath(tag: 'form', attr: 'action', value: '/contact')
     end
   end
 
-  context 'the imprint.html' do
-    it_behaves_like 'all pages', IMPRINT_URL
+  context 'imprint.html' do
+    it_behaves_like 'all pages and', IMPRINT_URL
     before { visit IMPRINT_URL }
 
     it 'includes the telephon-number as anchor' do
-      page.find(:xpath, "//a[contains(@href, 'tel:03050190')]")
+      find_xpath(tag: 'a', attr: 'href', value: 'tel:03050190')
     end
 
     it 'includes the address in a proper <address>-Tag' do
-      page.find(:xpath, "//address[contains(., 'Wilhelminenhofstraße 75A')]")
+      find_xpath(tag: 'address', value: 'Wilhelminenhofstraße 75A')
     end
   end
 end
