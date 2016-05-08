@@ -31,7 +31,7 @@ describe 'HTML Übung', type: :feature do
     it_behaves_like 'all pages', INDEX_URL
     before { visit INDEX_URL }
 
-    it 'has a p-tag with the Bazinga product description text "Bazinga!… up-to-date build environments."' do
+    it 'has a p-tag containing the Bazinga product message' do
       page.find(:xpath, "//p[contains(., 'Bazinga! Focus on getting your software')]")
     end
   end
