@@ -1,6 +1,6 @@
 describe 'Ruby Exercise' do
   GIT_REPO_PATH   = "/var/apps/#{$APP_NAME}/code"
-  GIT_TARGET_PATH = "./vendor/code"
+  GIT_TARGET_PATH = "./vendor/ruby_koans_code"
 
   it 'runs all koans successfully' do
     system "test -e #{GIT_REPO_PATH} || git clone #{GIT_REPO_PATH} #{GIT_TARGET_PATH}"
