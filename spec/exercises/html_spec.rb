@@ -9,6 +9,10 @@ shared_examples 'all pages' do |url|
     page.find(:xpath, "//h1[contains(., 'Bazinga!')]")
   end
 
+  it 'links to "index.html"' do
+    page.find(:xpath, "//a[contains(@href, 'contact.html')]")
+  end
+
   it 'links to "contact.html"' do
     page.find(:xpath, "//a[contains(@href, 'contact.html')]")
   end
