@@ -10,6 +10,6 @@ describe 'HTTP Exercise' do
   it 'contains a secret.txt file with the right secret' do
     secret_base = "#{Digest::SHA256.new.hexdigest("#{secret_code}#{app_id}")[0..5]}"
     secret_challenge = "#{Digest::SHA256.new.hexdigest("#{secret_code}#{secret_base}")[0..5]}"
-    expect(secret).to eq(secret_challenge), "Your secret '#{secret_code}' is not correct"
+    expect(secret).to eq(secret_challenge), "Your secret '#{secret}' is not correct"
   end
 end
