@@ -9,6 +9,7 @@ gem 'typhoeus'
 gem 'html_validation'
 gem 'jshintrb'
 gem 'complex_config', require: 'complex_config/rude'
+gem 'test-unit'
 
 group :development do
   gem 'byebug'

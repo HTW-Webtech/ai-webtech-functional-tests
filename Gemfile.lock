@@ -47,6 +47,7 @@ GEM
       cliver (~> 0.3.1)
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)
+    power_assert (0.2.6)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -70,6 +71,8 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
+    test-unit (3.1.5)
+      power_assert
     tins (1.7.0)
     typhoeus (0.8.0)
       ethon (>= 0.8.0)
@@ -95,7 +98,8 @@ DEPENDENCIES
   poltergeist
   rspec
   selenium-webdriver
+  test-unit
   typhoeus
 
 BUNDLED WITH
-   1.10.6
+   1.11.2

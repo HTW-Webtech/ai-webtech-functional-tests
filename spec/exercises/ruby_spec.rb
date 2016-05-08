@@ -1,6 +1,3 @@
-require 'open-uri'
-require 'digest'
-
 describe 'Ruby Exercise' do
   GIT_REPO_PATH   = "/var/apps/#{$APP_NAME}/code"
   GIT_TARGET_PATH = "./vendor/code"
