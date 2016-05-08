@@ -9,23 +9,21 @@ module LocalWebServer
     end
 
     config.before :all, type: :feature do
-      if port > 0
-        puts "Bringing up local webserver on port #{port}"
-        FileUtils.cd server_root_path do
-          # NOTE: Somehow puts or $stdout or $stderr do not work
-          # when running in `Rake::Task['foo'].invoke` context
-          # puts "Running webserver in #{Dir.pwd}"
+      puts "Bringing up local webserver on port #{port}"
+      FileUtils.cd server_root_path do
+        # NOTE: Somehow puts or $stdout or $stderr do not work
+        # when running in `Rake::Task['foo'].invoke` context
+        # puts "Running webserver in #{Dir.pwd}"
 
-          $SERVER_PID = fork do
-            exec "ruby -run -e httpd . -p #{port}"
-          end
+        $SERVER_PID = fork do
+          exec "ruby -run -e httpd . -p #{port}"
         end
+      end
 
-        at_exit do
-          puts "Bringing down local webserver"
-          Process.kill 'TERM', $SERVER_PID
-          Process.wait $SERVER_PID
-        end
+      at_exit do
+        puts "Bringing down local webserver"
+        Process.kill 'TERM', $SERVER_PID
+        Process.wait $SERVER_PID
       end
     end
   end

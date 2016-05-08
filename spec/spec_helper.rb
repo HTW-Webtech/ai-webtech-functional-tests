@@ -46,8 +46,10 @@ RSpec.configure do |config|
     Capybara.default_driver = :custom_poltergeist
     Capybara.javascript_driver = :custom_poltergeist
 
-    server_port = ENV.fetch('DEV_SERVER_PORT', 0)
+    server_port = ENV.fetch('DEV_SERVER_PORT', 0).to_i
     server_root_path = "solutions/exercise-#{$EXERCISE_NAME}"
-    LocalWebServer.setup(port: server_port, server_root_path: server_root_path, config: config)
+    if server_port > 0
+      LocalWebServer.setup(port: server_port, server_root_path: server_root_path, config: config)
+    end
   end
 end
