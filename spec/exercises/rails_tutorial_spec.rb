@@ -1,4 +1,4 @@
-describe '', type: :feature, js: true do
+describe 'Rails Tutorial', type: :feature, js: true do
   INDEX_URL = $EXERCISE_BASE_URL
   ARTICLES_URL = "#{INDEX_URL}/articles"
 
