@@ -5,7 +5,7 @@ describe 'Ruby Exercise' do
   it 'runs all koans successfully' do
     system "test -e #{GIT_TARGET_PATH} || git clone #{GIT_REPO_PATH} #{GIT_TARGET_PATH}"
     FileUtils.cd GIT_TARGET_PATH do
-      system "git pull origin master"
+      system "git stash && git pull origin master && git stash pop"
     end
 
     FileUtils.cd GIT_TARGET_PATH do
