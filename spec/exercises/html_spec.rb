@@ -47,7 +47,7 @@ describe 'HTML Übung:', type: :feature do
   end
 
   context 'contact.html' do
-    it_behaves_like 'all pages and'
+    it_behaves_like 'all pages and', CONTACT_URL
     before { visit CONTACT_URL }
 
     it 'has a form with action="/contact", and method="/post"' do
@@ -57,7 +57,7 @@ describe 'HTML Übung:', type: :feature do
   end
 
   context 'imprint.html' do
-    it_behaves_like 'all pages and'
+    it_behaves_like 'all pages and', IMPRINT_URL
     before { visit IMPRINT_URL }
 
     it 'includes the telephon-number as anchor' do
