@@ -95,17 +95,4 @@ describe 'Sinatra Exercise:', type: :feature do
     end
   end
 
-  context 'admin.html' do
-    it 'Hat einen Knopf "Cookies löschen" der die gezählten Seitenaufrufe zurückgesetzt.' do
-      basic_auth user: 'admin', password: 'admin'
-      visit ADMIN_URL
-
-      expect(page).to have_content('1. Seitenaufruf')
-      visit ADMIN_URL
-      expect(page).to have_content('2. Seitenaufruf')
-
-      click_on 'Session zurücksetzen'
-      expect(page).to have_content('1. Seitenaufruf')
-    end
-  end
 end
