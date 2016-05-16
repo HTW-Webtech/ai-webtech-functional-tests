@@ -12,6 +12,22 @@ module TestReporter
       reports.all?(&:success?)
     end
 
+    def tests_count
+      reports.map(&:tests_count).reduce(:+)
+    end
+
+    def success_count
+      tests_count - failures_count - errors_count
+    end
+
+    def failures_count
+      reports.map(&:failures_count).reduce(:+)
+    end
+
+    def errors_count
+      reports.map(&:errors_count).reduce(:+)
+    end
+
     def reports
       report_files.map { |file| Report.new(IO.binread(file)) }
     end

@@ -4,20 +4,46 @@ describe TestReporter::Inspector do
   let(:failure_reports_path) { File.absolute_path(__FILE__ + '/../../../support/files/failure-and-error-reports') }
   let(:success_reports_path) { File.absolute_path(__FILE__ + '/../../../support/files/success-reports') }
 
-  describe '#success?' do
-    context 'for a tuccess' do
-      subject { described_class.new(reports_path: success_reports_path) }
+  context 'for a success report' do
+    subject { described_class.new(reports_path: success_reports_path) }
 
+    describe '#success?' do
       it 'returns true' do
         expect(subject).to be_success
       end
     end
 
-    context 'for a failure' do
-      subject { described_class.new(reports_path: failure_reports_path) }
+    describe '#tests_count' do
+      it 'returns 2' do
+        expect(subject.tests_count).to eq(2)
+      end
+    end
 
+    describe '#success_count' do
+      it 'returns 2' do
+        expect(subject.success_count).to eq(2)
+      end
+    end
+  end
+
+  context 'for a failure report' do
+    subject { described_class.new(reports_path: failure_reports_path) }
+
+    describe '#success?' do
       it 'returns false' do
         expect(subject).to_not be_success
+      end
+    end
+
+    describe '#tests_count' do
+      it 'returns 4' do
+        expect(subject.tests_count).to eq(4)
+      end
+    end
+
+    describe '#success_count' do
+      it 'returns 2' do
+        expect(subject.success_count).to eq(2)
       end
     end
   end

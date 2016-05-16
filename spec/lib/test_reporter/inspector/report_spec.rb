@@ -2,6 +2,12 @@ describe TestReporter::Inspector::Report do
   let(:failure_xml) { read_support_file('failure-and-error-reports/SPEC-1-failure.xml') }
   subject { described_class.new(failure_xml) }
 
+  describe '#tests_count' do
+    it 'returns 2' do
+      expect(subject.tests_count).to eq 2
+    end
+  end
+
   describe '#failures_count' do
     it 'returns 1' do
       expect(subject.failures_count).to eq 1
@@ -16,7 +22,7 @@ describe TestReporter::Inspector::Report do
 
   describe '#report' do
     it 'returns the correct report' do
-      expect(subject.report).to eq ({ failures_count: 1, errors_count: 0, success: false })
+      expect(subject.report).to eq ({ tests_count: 2, failures_count: 1, errors_count: 0, success: false })
     end
 
     context 'with a success xml' do
@@ -24,7 +30,7 @@ describe TestReporter::Inspector::Report do
       subject { described_class.new(success_xml) }
 
       it 'returns the correct report' do
-        expect(subject.report).to eq ({ failures_count: 0, errors_count: 0, success: true })
+        expect(subject.report).to eq ({ tests_count: 2, failures_count: 0, errors_count: 0, success: true })
       end
     end
   end

@@ -20,7 +20,9 @@ module TestReporter
       {
         app_name: app_name,
         exercise_id: exercise_id,
-        success: inspector.success?
+        success: inspector.success?,
+        tests_count: inspector.tests_count,
+        success_count: inspector.success_count,
       }
     end
   end
