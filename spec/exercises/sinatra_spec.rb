@@ -56,10 +56,10 @@ describe 'Sinatra Exercise:', type: :feature do
       fill_in 'message', with: message
       click_button 'Absenden'
 
-      expect_content_match('Vielen Dank für Ihre Anfrage')
-      expect_content_match(name)
-      expect_content_match(email)
-      expect_content_match(message)
+      expect(page.body).to match(/Vielen Dank für Ihre Anfrage/i)
+      expect(page).to have_content(name)
+      expect(page).to have_content(email)
+      expect(page).to have_content(message)
     end
   end
 
@@ -89,7 +89,7 @@ describe 'Sinatra Exercise:', type: :feature do
     it 'Zeigt Text "n. Seitenaufruf" aus (n={1,2,3,4,5}).' do
       1.upto(5).each do |count|
         visit INDEX_URL
-        expect_content_match("#{count}. Seitenaufruf")
+        expect(page.body).to match(/#{count}. Seitenaufruf/i)
       end
     end
   end
