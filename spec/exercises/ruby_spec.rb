@@ -10,7 +10,7 @@ describe 'Ruby Exercise' do
       system "git reset HEAD --hard && git pull origin master"
     end
 
-    File.exists? "#{GIT_TARGET_PATH}/Rakfile" or fail("Das git Repository enthält kein Rakefile, dass zur Übung gehört. Sind wirklich alle Änderungen auf dem Aris-Server?")
+    File.exists? "#{GIT_TARGET_PATH}/Rakefile" or fail("Das git Repository enthält kein Rakefile, dass zur Übung gehört. Sind wirklich alle Änderungen auf dem Aris-Server?")
     FileUtils.cd GIT_TARGET_PATH do
       result = `rake`
       expect(result).to include("Mountains are again merely mountains"), "You did not finish all the koans yet."
