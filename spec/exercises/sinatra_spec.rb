@@ -33,19 +33,18 @@ describe 'Sinatra Exercise:', type: :feature do
   ADMIN_URL   = "#{INDEX_URL}/admin.html"
 
   context 'index.html' do
-    it_behaves_like 'all pages and'
     before { visit INDEX_URL }
+    it_behaves_like 'all pages and'
   end
 
   context 'imprint.html' do
+    before { visit IMPRINT_URL }
     it_behaves_like 'all pages and'
-    before { visit INDEX_URL }
   end
 
   context 'contact.html' do
-    it_behaves_like 'all pages and'
-
     before { visit CONTACT_URL }
+    it_behaves_like 'all pages and'
 
     it 'zeigt alle Formular-Felder wieder an, nachdem das Formular abgesendet wurde' do
       name = 'Hans Wurst'
@@ -65,24 +64,24 @@ describe 'Sinatra Exercise:', type: :feature do
   end
 
   context 'admin.html' do
-    it_behaves_like 'all pages and'
-
     before do
       basic_auth user: 'admin', password: 'admin'
       visit ADMIN_URL
     end
+
+    it_behaves_like 'all pages and'
   end
 
   context 'admin.html' do
     it 'schützt den Zugriff via Basic Auth und gibt den Response Code 401 zurück' do
       visit ADMIN_URL
-      expect(page.status_code).to eq(401)
+      expect(page.status_code).to eq(401), "Auf #{page.current_url}"
     end
 
     it 'erlaubt den Zugriff mit dem geheimen Nutzer/Passwort' do
       basic_auth user: 'admin', password: 'admin'
       visit ADMIN_URL
-      expect(page.status_code).to eq(200)
+      expect(page.status_code).to eq(200), "Auf #{page.current_url}"
     end
   end
 
@@ -90,7 +89,7 @@ describe 'Sinatra Exercise:', type: :feature do
     it 'Zeigt Text "n. Seitenaufruf" aus (n={1,2,3,4,5}).' do
       1.upto(5).each do |count|
         visit INDEX_URL
-        expect(page.body).to have_content("#{count}. Seitenaufruf")
+        expect(page.body).to have_content("#{count}. Seitenaufruf"), "Auf #{page.current_url}"
       end
     end
   end
