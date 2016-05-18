@@ -4,6 +4,7 @@ describe 'Ruby Exercise' do
 
   it 'runs all koans successfully' do
     system "test -e #{GIT_TARGET_PATH} || git clone #{GIT_REPO_PATH} #{GIT_TARGET_PATH}"
+    File.exists? GIT_TARGET_PATH or fail("Das git Repository konnte nicht gefunden werden. Sind wirklich alle Änderungen auf dem Aris-Server?")
     FileUtils.cd GIT_TARGET_PATH do
       puts "PWD: #{`pwd`.chomp}"
       system "git reset HEAD --hard && git pull origin master"
