@@ -24,7 +24,7 @@ describe 'Rails Tutorial', type: :feature, js: true do
     end
 
     it 'Creates a new article' do
-      click_on 'New article'
+      click_on 'New Article'
       click_on 'Create Article'
 
       expect(page).to have_content 'Title is too short'
