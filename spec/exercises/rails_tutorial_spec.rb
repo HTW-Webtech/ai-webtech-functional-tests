@@ -11,6 +11,10 @@ describe 'Rails Tutorial', type: :feature, js: true do
   context '' do
     before do
       visit ARTICLES_URL
+
+      it 'includes the required <meta data-app-slug="app-id">-tag' do
+        expect_xpath(tag: 'meta', attr: 'data-app-slug', value: $APP_NAME)
+      end
     end
 
     it 'Destroys all existing articles' do
@@ -22,15 +26,17 @@ describe 'Rails Tutorial', type: :feature, js: true do
     it 'Creates a new article' do
       basic_auth user: 'admin', password: 'admin'
       click_on 'New article'
-      click_on 'Save Article'
+      click_on 'Create Article'
 
       expect(page).to have_content 'Title is too short'
 
       # Fill out form w/ all necessary attributes
       fill_in 'Title', with: 'Ein Staat organisiert den Weg ins Internet'
       fill_in 'Text', with: <<-TEXT
-        Genau ein Jahr nach der Ankündigung des Endes der US-Blockadepolitik gegen Kuba wird immer deutlicher, wie der Inselstaat die Bevölkerung ins Internet bringen will. Die Voraussetzungen für eine Aufholjagd im IT-Bereich sind gar nicht schlecht.'
-      TEXT
+Genau ein Jahr nach der Ankündigung des Endes der US-Blockadepolitik gegen
+Kuba wird immer deutlicher, wie der Inselstaat die Bevölkerung ins Internet bringen will.
+Die Voraussetzungen für eine Aufholjagd im IT-Bereich sind gar nicht schlecht.
+TEXT
       click_on 'Save Article'
 
       # Go back to the index page
