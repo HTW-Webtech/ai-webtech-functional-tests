@@ -37,7 +37,7 @@ Genau ein Jahr nach der Ankündigung des Endes der US-Blockadepolitik gegen
 Kuba wird immer deutlicher, wie der Inselstaat die Bevölkerung ins Internet bringen will.
 Die Voraussetzungen für eine Aufholjagd im IT-Bereich sind gar nicht schlecht.
 TEXT
-      click_on 'Save Article'
+      click_on 'Create Article'
 
       # Go back to the index page
       visit ARTICLES_URL
