@@ -1,6 +1,6 @@
 shared_examples 'all pages and' do
 
-  it 'has the required meta-tag with data-app-id="app-slug"' do
+  it 'includes the required <meta data-app-slug="app-id">-tag' do
     expect_xpath(tag: 'meta', attr: 'data-app-slug', value: $APP_NAME)
   end
 
