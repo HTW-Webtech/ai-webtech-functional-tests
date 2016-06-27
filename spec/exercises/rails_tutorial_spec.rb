@@ -11,10 +11,10 @@ describe 'Rails Tutorial', type: :feature, js: true do
   context '' do
     before do
       visit ARTICLES_URL
+    end
 
-      it 'includes the required <meta data-app-slug="app-id">-tag' do
-        expect_xpath(tag: 'meta', attr: 'data-app-slug', value: $APP_NAME)
-      end
+    it 'includes the required <meta data-app-slug="app-id">-tag' do
+      expect_xpath(tag: 'meta', attr: 'data-app-slug', value: $APP_NAME)
     end
 
     it 'Destroys all existing articles' do
