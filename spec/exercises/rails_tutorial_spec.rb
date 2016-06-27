@@ -24,7 +24,8 @@ describe 'Rails Tutorial', type: :feature, js: true do
     end
 
     it 'Creates a new article' do
-      click_on 'New Article'
+      visit "#{ARTICLES_URL}/new"
+      # Submit the form w/o any input
       click_on 'Create Article'
 
       expect(page).to have_content 'Title is too short'
